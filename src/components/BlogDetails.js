@@ -15,7 +15,7 @@ const BlogDetails = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const resultBlog = await axios.get(`/api/blogs/${id}`);
+      const resultBlog = await axios.get(`/api/blogs/find/${id}`);
       console.log(resultBlog.data);
       setBlog(resultBlog.data);
     };

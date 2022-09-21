@@ -25,7 +25,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const resultProduct = await axios.get(`/api/products/${id}`);
+      const resultProduct = await axios.get(`/api/products/find/${id}`);
       console.log(resultProduct.data);
       setProduct(resultProduct.data);
     };
@@ -75,9 +75,7 @@ const ProductDetails = () => {
             <div className="pd-top">
               <TransformWrapper>
                 <TransformComponent>
-                  <img
-                    src={selectedImage || `../${product.image}`}
-                    className="pd-img"
+                  <img src={selectedImage || `${product.image}`} className="pd-img"
                     alt={product.title}
                   />
                 </TransformComponent>
@@ -85,14 +83,14 @@ const ProductDetails = () => {
             </div>
             <div className="pd-bottom">
               <img
-                src={`../${product.image}`}
-                onClick={() => setSelectedImage(`../${product.image}`)}
+                src={`${product.image}`}
+                onClick={() => setSelectedImage(`${product.image}`)}
                 className="pd-smallImg"
                 alt={product.title}
               />
               <img
-                src={`../${product.imageOne}`}
-                onClick={() => setSelectedImage(`../${product.imageOne}`)}
+                src={`${product.imageOne}`}
+                onClick={() => setSelectedImage(`${product.imageOne}`)}
                 className="pd-smallImg"
                 alt={product.title}
               />
@@ -128,12 +126,12 @@ const ProductDetails = () => {
                           type="radio"
                           onChange={(e) => setSize(e.target.value)}
                           key={size._id}
-                          id={size.title}
+                          id={size.value}
                           name="size"
-                          value={size.title}
+                          value={size.value}
                           required
                         />
-                        <label htmlFor={size.title}>{size.title}</label>
+                        <label htmlFor={size.value}>{size.value}</label>
                       </>
                     ))}
                   </div>
@@ -147,12 +145,12 @@ const ProductDetails = () => {
                           type="radio"
                           onChange={(e) => setColor(e.target.value)}
                           key={color._id}
-                          id={color.title}
+                          id={color.value}
                           name="color"
-                          value={color.title}
+                          value={color.value}
                           required
                         />
-                        <label htmlFor={color.title}>{color.title}</label>
+                        <label htmlFor={color.value}>{color.value}</label>
                       </>
                     ))}
                   </div>
